@@ -3,11 +3,26 @@
 astro.factory('AudioStorage', ($http) => {
 
 let identify = (buffer) => {
-  //filePath is the absolute path to the file(/mnt/sdcard/...)
-  // window.plugins.Base64.encodeFile(msg, function(base64){
-  //             console.log('file base64 encoding: ' + base64);
-  //         });
   console.log("buffer", buffer);
+  console.log("bufatob: ", atob(buffer));
+  return new Promise ((resolve, reject) => {
+    $http({
+      url:"http://www.methegalaxy.com:3000/", //3000?example
+      method: "POST",
+      data: {
+        audio: "buffer"
+      }
+    })
+    .success((data) => {
+      console.log("data from identify",data);
+      console.log("data msg from identify",data.msg);
+      console.log("data success from identify",data.success);
+      console.log("data stringify", JSON.stringify(data));
+    })
+    .error((err) => {
+      reject(err);
+    });
+  });
 };
 return {identify};
 });

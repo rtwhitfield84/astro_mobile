@@ -37,7 +37,8 @@ astro.controller('recordController', function($scope, AudioStorage) {
     window.plugins.audioRecorderAPI.record(function(msg) {
       // complete
       console.log('ok: ' + msg);
-      var buffer = btoa(msg);
+      var buffer = btoa(msg.split('/').pop());
+      // var buffer = btoa(msg);
       // window.plugins.Base64.encodeFile(msg, function(Base64){
       //             console.log('file Base64 encoding: ' + Base64);
       //         });
