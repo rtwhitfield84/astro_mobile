@@ -1,4 +1,4 @@
-astro.controller('recordController', function($scope) {
+astro.controller('recordController', function($scope, AudioStorage) {
 
 
   var recorder = new Object;
@@ -14,15 +14,12 @@ astro.controller('recordController', function($scope) {
   recorder.record = function() {
     window.plugins.audioRecorderAPI.record(function(msg) {
       // complete
-      alert('ok: ' + msg);
+      console.log('ok: ' + msg);
+    AudioStorage.identify(msg);
     }, function(msg) {
       // failed
       alert('ko: ' + msg);
     }, 6); // record 6 seconds
-    acr.identify(msg)
-      .then((data) => {
-        console.log("data", data);
-      });
   };
   recorder.playback = function() {
     window.plugins.audioRecorderAPI.playback(function(msg) {
@@ -41,6 +38,7 @@ astro.controller('recordController', function($scope) {
   $scope.play = function() {
     console.log("play");
     recorder.playback();
+    AudioStorage.identify(msg);
   };
 });
 

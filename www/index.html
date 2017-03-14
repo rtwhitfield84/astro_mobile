@@ -40,9 +40,11 @@
         <h1 class="title">Astro</h1>
       </ion-header-bar>
       <ion-content ng-controller="recordController">
-      <button class="button button-full button-positive" ng-click="startRecord()">Record</button>
+      <button class="button button-full button-positive" style="padding-top: 50px" ng-click="startRecord()">Record</button>
       <button class="button button-full button-positive" ng-click="play()">play</button>
       </ion-content>
     </ion-pane>
+    <!-- providers -->
+    <script src="js/factories/AudioFactory.js"></script>
   </body>
 </html>
