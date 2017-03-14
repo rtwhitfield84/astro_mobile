@@ -11,11 +11,37 @@ astro.controller('recordController', function($scope, AudioStorage) {
       alert('ko: ' + msg);
     });
   };
+  // recorder.record = function() {
+  //   window.plugins.audioRecorderAPI.record(function(savedFilePath) {
+  //     var fileName = savedFilePath.split('/')[savedFilePath.split('/').length - 1];
+  //     var directory;
+  //     if (cordova.file.documentsDirectory) {
+  //       directory = cordova.file.documentsDirectory; // for iOS
+  //     } else {
+  //       directory = cordova.file.externalRootDirectory; // for Android
+  //     }
+  //     $cordovaFile.copyFile(
+  //       cordova.file.dataDirectory, fileName,
+  //       directory, "new_file.m4a"
+  //     )
+  //       .then(function (success) {
+  //         console.log("success: ",JSON.stringify(success));
+  //       }, function (error) {
+  //         console.log(JSON.stringify(error));
+  //       });
+  //   }, function(msg) {
+  //     console.log('ko: ' + msg);
+  //   }, 3);
+  // };
   recorder.record = function() {
     window.plugins.audioRecorderAPI.record(function(msg) {
       // complete
       console.log('ok: ' + msg);
-    AudioStorage.identify(msg);
+      var buffer = btoa(msg);
+      // window.plugins.Base64.encodeFile(msg, function(Base64){
+      //             console.log('file Base64 encoding: ' + Base64);
+      //         });
+    AudioStorage.identify(buffer);
     }, function(msg) {
       // failed
       alert('ko: ' + msg);
@@ -38,7 +64,7 @@ astro.controller('recordController', function($scope, AudioStorage) {
   $scope.play = function() {
     console.log("play");
     recorder.playback();
-    AudioStorage.identify(msg);
+    // AudioStorage.identify(msg);
   };
 });
 
