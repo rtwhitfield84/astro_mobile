@@ -9,36 +9,47 @@ astro.factory('AudioStorage', ($http) => {
           var reader  = new FileReader();
           reader.onloadend = function () {
               callback(reader.result);
-              console.log("reader result", reader.result);
           };
           reader.readAsDataURL(xhr.response);
-          console.log("reader.readAsDataURL(xhr.response): ",reader.readAsDataURL(xhr.response));
       };
-      console.log("url from convert", url);
       xhr.open('GET', url);
       xhr.send();
-      console.log("xhr.send()", xhr.send());
   }
 
 let identify = (msg) => {
-  console.log("msg", msg);
+  // console.log("msg", msg);
   convertFileToDataURLviaFileReader(msg,function(base64Data){
     var audioB64 = base64Data;
-    console.log("audioB64", audioB64);
+    // console.log("audioB64", audioB64);
   // console.log("bufatob: ", atob(buffer));
   return new Promise ((resolve, reject) => {
     $http({
-      url:"http://www.methegalaxy.com:3000/", //3000?example
+      url:"http://www.methegalaxy.com:3000/",
       method: "POST",
       data: {
         audio: audioB64
       }
     })
     .success((data) => {
-      console.log("data from identify",data);
-      console.log("data msg from identify",data.msg);
-      console.log("data success from identify",data.success);
-      console.log("data stringify", JSON.stringify(data));
+      // console.log("metadata", data.data.metadata));
+      console.log("music[0]", data.data.metadata.music[0]);
+      console.log("artist", data.data.metadata.music[0].artists[0].name);
+      let artist = data.data.metadata.music[0].artists[0].name;
+      console.log("title", data.data.metadata.music[0].title);
+let title = data.data.metadata.music[0].title;
+      console.log("album", data.data.metadata.music[0].album.name);
+      // console.log("metadata", data.metadata.artists));
+
+  let indexLetter = artist.slice(0, 1);
+  let tabTitle = title.replace(/ /g,"_").replace(/[^\w\s]/gi, '');
+  let artistName = artist.replace(/ /g, '_').replace(/[^\w\s]/gi, '');
+  console.log("indexLetter", indexLetter);
+  console.log("title", tabTitle );
+  console.log("artist", artistName);
+  let chordLink = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`;
+  let tabLink = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
+  console.log("link chord:",chordLink);
+  console.log("link tab :",tabLink);
     })
     .error((err) => {
       reject(err);
