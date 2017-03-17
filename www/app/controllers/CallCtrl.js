@@ -1,4 +1,6 @@
-astro.controller('recordController', function($scope, AudioStorage) {
+"use strict";
+
+astro.controller('CallCtrl', function($scope, AudioStorage) {
 
 
   var recorder = new Object;

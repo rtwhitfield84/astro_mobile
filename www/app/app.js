@@ -5,7 +5,37 @@
 // the 2nd parameter is an array of 'requires'
 var astro = angular.module('astro', ['ionic']);
 
+app.config(function($stateProvider,$urlRouterProvider) {
 
+
+  $stateProvider
+  .state('login', {
+    url: '/',
+    templateUrl: 'templates/login.html',
+    controller: 'LoginCtrl'
+  })
+  .state('register', {
+    url: '/',
+    templateUrl: 'templates/register.html',
+    controller: 'RegisterCtrl'
+  })
+  .state('call', {
+    url: '/call',
+    templateUrl: 'templates/call.html',
+    controller: 'CallCtrl'
+  })
+  .state('fetch', {
+    url: '/',
+    templateUrl: 'templates/fetch.html'
+  })
+  .state('results', {
+    url: '/',
+    templateUrl: 'templates/results.html',
+    controller: 'ResultsCtrl'
+  });
+
+$urlRouterProvider.otherwise('/call');
+});
 
 astro.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
