@@ -1,6 +1,6 @@
 "use strict";
 
-astro.controller('AuthCtrl', [
+astro.controller('RegisterCtrl', [
   '$scope',
   '$http',
   '$location',

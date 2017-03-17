@@ -10,6 +10,7 @@ $scope.callAstro = () => {
 
 $scope.saveToTabYard = () => {
   console.log("saved");
+  $window.location.href = '#/call';
 };
 $scope.getTabInfo();
 });
