@@ -3,7 +3,9 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-var astro = angular.module('astro', ['ionic', 'base64']);
+var astro = angular.module('astro', ['ionic']);
+
+
 
 astro.run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -21,4 +23,4 @@ astro.run(function($ionicPlatform) {
       StatusBar.styleDefault();
     }
   });
-})
+});

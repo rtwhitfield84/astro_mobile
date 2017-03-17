@@ -17,11 +17,8 @@ astro.factory('AudioStorage', ($http) => {
   }
 
 let identify = (msg) => {
-  // console.log("msg", msg);
   convertFileToDataURLviaFileReader(msg,function(base64Data){
     var audioB64 = base64Data;
-    // console.log("audioB64", audioB64);
-  // console.log("bufatob: ", atob(buffer));
   return new Promise ((resolve, reject) => {
     $http({
       url:"http://www.methegalaxy.com:3000/",
@@ -36,7 +33,7 @@ let identify = (msg) => {
       console.log("artist", data.data.metadata.music[0].artists[0].name);
       let artist = data.data.metadata.music[0].artists[0].name;
       console.log("title", data.data.metadata.music[0].title);
-let title = data.data.metadata.music[0].title;
+      let title = data.data.metadata.music[0].title;
       console.log("album", data.data.metadata.music[0].album.name);
       // console.log("metadata", data.metadata.artists));
 
