@@ -54,6 +54,7 @@ let identify = (msg) => {
 else {
   $window.location.href = '#/fail';
 }
+resolve(data);
     })
     .error((err) => {
       reject(err);

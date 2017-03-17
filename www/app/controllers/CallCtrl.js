@@ -8,7 +8,7 @@ astro.controller('CallCtrl', function($scope,$state,$window,AudioStorage) {
   recorder.record = function() {
     window.plugins.audioRecorderAPI.record(function(msg) {
       // complete
-      console.log('ok: ' + msg);
+      // console.log('ok: ' + msg);
     AudioStorage.identify(msg);
     }, function(msg) {
       // failed
