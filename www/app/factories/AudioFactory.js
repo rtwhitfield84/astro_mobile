@@ -1,6 +1,6 @@
 "use strict";
 
-astro.factory('AudioStorage', ($http) => {
+astro.factory('AudioStorage', ($http, $window) => {
 
   function convertFileToDataURLviaFileReader(url, callback){
       var xhr = new XMLHttpRequest();
@@ -17,6 +17,7 @@ astro.factory('AudioStorage', ($http) => {
   }
 
 let identify = (msg) => {
+  $window.location.href = "#/fetch";
   convertFileToDataURLviaFileReader(msg,function(base64Data){
     var audioB64 = base64Data;
   return new Promise ((resolve, reject) => {
@@ -28,6 +29,7 @@ let identify = (msg) => {
       }
     })
     .success((data) => {
+      $window.location.href = '#/results';
       // console.log("metadata", data.data.metadata));
       console.log("music[0]", data.data.metadata.music[0]);
       console.log("artist", data.data.metadata.music[0].artists[0].name);
