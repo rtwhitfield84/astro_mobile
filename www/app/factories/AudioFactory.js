@@ -29,6 +29,7 @@ let identify = (msg) => {
       }
     })
     .success((data) => {
+      if (data.msg === 'Success') {
       $window.location.href = '#/results';
       // console.log("metadata", data.data.metadata));
       console.log("music[0]", data.data.metadata.music[0]);
@@ -49,6 +50,10 @@ let identify = (msg) => {
   let tabLink = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
   console.log("link chord:",chordLink);
   console.log("link tab :",tabLink);
+}
+else {
+  $window.location.href = '#/fail';
+}
     })
     .error((err) => {
       reject(err);

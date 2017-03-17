@@ -33,6 +33,11 @@ astro.config(function($stateProvider,$urlRouterProvider) {
     url: '/results',
     templateUrl: 'templates/results.html',
     controller: 'ResultsCtrl'
+  })
+  .state('fail', {
+    url: '/fail',
+    templateUrl: 'templates/fail.html',
+    controller: 'FailCtrl'
   });
 
 $urlRouterProvider.otherwise('/');
