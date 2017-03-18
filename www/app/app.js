@@ -14,12 +14,12 @@ astro.config(function($stateProvider,$urlRouterProvider) {
   .state('login', {
     url: '/',
     templateUrl: 'templates/login.html',
-    controller: 'LoginCtrl'
+    controller: 'UserCtrl'
   })
   .state('register', {
     url: '/register',
     templateUrl: 'templates/register.html',
-    controller: 'RegisterCtrl'
+    controller: 'UserCtrl'
   })
   .state('call', {
     url: '/call',
