@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 var astro = angular.module('astro', ['ionic'])
-            .constant('apiUrl', "http://localhost:8000");
+            .constant('apiUrl', "https://api-astro.herokuapp.com/api-token-auth/");
 
 astro.config(function($stateProvider,$urlRouterProvider) {
 
