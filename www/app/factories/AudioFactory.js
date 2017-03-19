@@ -68,20 +68,24 @@ let identify = (msg) => {
   };
   let postTab = (data) => {
     console.log("postTabdata sttirng", JSON.stringify(data));
-    if (!data.data.metadata.music[0].external_metadata.hasOwnPropert('spotify')) {
-      var spotify_track_id = '';
-      var spotify_album_id = '';
+    if (data && data.data && data.data.metadata
+     && data.data.metadata.music[0]
+     && data.data.metadata.music[0].external_metadata
+     && data.data.metadata.music[0].external_metadata.spotify) {
+          var spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id;
+          var spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id;
+    } else {
+          var spotify_track_id = '';
+          var spotify_album_id = '';
     }
     var artist = data.data.metadata.music[0].artists[0].name;
     var album = data.data.metadata.music[0].album.name;
     console.log("data.data.metadata.music[0].external_metadata", JSON.stringify(data.data.metadata.music[0].external_metadata.spotify));
-    var spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id;
-    var spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id;
     var youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid;
     console.log("artist", artist);
     var title = data.data.metadata.music[0].title;
     var indexLetter = artist.slice(0, 1);
-    var tabTitle = title.replace(/ /g,"_").replace(/[^\w\s]/gi, '');
+    var tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, '');
     var artistName = artist.replace(/ /g, '_').replace(/[^\w\s]/gi, '');
     var chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`;
     var tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
