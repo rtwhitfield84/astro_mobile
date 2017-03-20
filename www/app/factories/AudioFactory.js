@@ -20,7 +20,7 @@ astro.factory('AudioStorage', ($http, $window, RootFactory) => {
 let identify = (msg) => {
 
     return new Promise ((resolve, reject) => {
-    $window.location.href = "#/fetch";
+    // $window.location.href = "#/fetch";
       convertFileToDataURLviaFileReader(msg,function(base64Data){
         var audioB64 = base64Data;
           $http({

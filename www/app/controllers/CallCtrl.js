@@ -24,6 +24,8 @@ astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStor
   $scope.startRecord = () => {
     console.log("recordingstart");
     recorder.record();
+    $window.location.href = "#/fetch";
+
   };
 
   $scope.getSongInfo = (msg) => {
