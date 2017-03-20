@@ -70,15 +70,14 @@ let postTab = (data) => {
   var artistName = artist.replace(/ /g, '_').replace(/[^\w\s]/gi, '');
   var chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`;
   var tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
-  var artistUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}_tabs.htm`;
+  var artistUrl = `https://www.ultimate-guitar.com/tabs/${artistName}_tabs.htm`;
   console.log("RootFactory.getToken()",RootFactory.getToken());
-  var user = [1];
+
 
     $http({
       url:"https://api-astro.herokuapp.com/tabs/",
       method: 'POST',
       data: {
-        "user": user,
         "artist_url": artistUrl,
         "chords_url": chordUrl,
         "tab_url": tabUrl,
