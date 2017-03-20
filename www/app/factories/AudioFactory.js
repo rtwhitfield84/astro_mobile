@@ -73,6 +73,13 @@ let postTab = (data) => {
   var artistUrl = `https://www.ultimate-guitar.com/tabs/${artistName}_tabs.htm`;
   console.log("RootFactory.getToken()",RootFactory.getToken());
 
+      $http({
+        url: `https://api.spotify.com/v1/albums/${data.data.metadata.music[0].external_metadata.spotify.album.id}`,
+        method: 'GET'
+      }).success((artUrl) => {
+        var album_art = artUrl.images[0].url;
+        // resolve(album_art);
+        console.log("album_art", album_art);
 
     $http({
       url:"https://api-astro.herokuapp.com/tabs/",
@@ -87,7 +94,7 @@ let postTab = (data) => {
         "spotify_track_id": spotify_track_id,
         "spotify_album_id": spotify_album_id,
         "youtube_video_id": youtube_video_id,
-        "art_url": art_url
+        "art_url": album_art
       },
       headers: {
           'Authorization': "Token " + RootFactory.getToken()
@@ -101,6 +108,7 @@ let postTab = (data) => {
       reject(err);
     });
   });
+  });
   };
     return {identify, postTab};
   });
@@ -108,7 +116,10 @@ let postTab = (data) => {
 
 
 
-
+//   });
+// };
+//   return {identify, postTab};
+// });
 
 
 
