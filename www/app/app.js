@@ -1,14 +1,7 @@
-// Ionic Starter App
-
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
 var astro = angular.module('astro', ['ionic'])
             .constant('apiUrl', "https://api-astro.herokuapp.com/api-token-auth/");
 
 astro.config(function($stateProvider,$urlRouterProvider) {
-
-// $ionicConfigProvider.views.maxCache(0);
 
 
   $stateProvider

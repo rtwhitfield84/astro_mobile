@@ -48,33 +48,6 @@ let identify = (msg) => {
     });
   };
 
-  // let getAlbumArt = (id) =>{
-  //   $http.get(`https://api.spotify.com/v1/albums/${id}`)
-  //   .then(
-  //     function(response){
-  //       console.log("response.data", response.data);
-  //       return response.data;
-  //     },
-  //     function(response){
-  //       console.log("response", response);
-  //     });
-  // };
-
-//   let getAlbumArt = (id) => {
-//     return new Promise((resolve,reject) => {
-//     $http({
-//       url: `https://api.spotify.com/v1/albums/${id}`,
-//       method: 'GET'
-//     }).success((artUrl) => {
-//       var album_art = artUrl.images[0].url;
-//       resolve(album_art);
-//       console.log("album_art", album_art);
-//     }).error((err) => {
-//       console.log(err);
-//     });
-// });
-// };
-//
 
 
 let postTab = (data) => {
@@ -90,9 +63,7 @@ let postTab = (data) => {
   var art_url = '';
   var artist = data.data.metadata.music[0].artists[0].name;
   var album = data.data.metadata.music[0].album.name;
-  console.log("data.data.metadata.music[0].external_metadata", JSON.stringify(data.data.metadata.music[0].external_metadata.spotify));
   var youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid;
-  console.log("artist", artist);
   var title = data.data.metadata.music[0].title;
   var indexLetter = artist.slice(0, 1);
   var tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, '');
@@ -100,13 +71,14 @@ let postTab = (data) => {
   var chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`;
   var tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
   var artistUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}_tabs.htm`;
-  console.log("artistUrl", artistUrl);
-
+  console.log("RootFactory.getToken()",RootFactory.getToken());
+  var user = [1];
 
     $http({
       url:"https://api-astro.herokuapp.com/tabs/",
       method: 'POST',
       data: {
+        "user": user,
         "artist_url": artistUrl,
         "chords_url": chordUrl,
         "tab_url": tabUrl,
@@ -217,3 +189,30 @@ let postTab = (data) => {
 
 
 
+  // let getAlbumArt = (id) =>{
+  //   $http.get(`https://api.spotify.com/v1/albums/${id}`)
+  //   .then(
+  //     function(response){
+  //       console.log("response.data", response.data);
+  //       return response.data;
+  //     },
+  //     function(response){
+  //       console.log("response", response);
+  //     });
+  // };
+
+//   let getAlbumArt = (id) => {
+//     return new Promise((resolve,reject) => {
+//     $http({
+//       url: `https://api.spotify.com/v1/albums/${id}`,
+//       method: 'GET'
+//     }).success((artUrl) => {
+//       var album_art = artUrl.images[0].url;
+//       resolve(album_art);
+//       console.log("album_art", album_art);
+//     }).error((err) => {
+//       console.log(err);
+//     });
+// });
+// };
+//
