@@ -8,6 +8,7 @@ var astro = angular.module('astro', ['ionic'])
 
 astro.config(function($stateProvider,$urlRouterProvider) {
 
+// $ionicConfigProvider.views.maxCache(0);
 
 
   $stateProvider
@@ -33,7 +34,7 @@ astro.config(function($stateProvider,$urlRouterProvider) {
   .state('results', {
     url: '/results',
     templateUrl: 'templates/results.html',
-    controller: 'ResultsCtrl'
+    controller: 'CallCtrl'
   })
   .state('fail', {
     url: '/fail',
