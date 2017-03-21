@@ -8,3 +8,4 @@ plugins/
 lib/node_modules
 .sass-cache
 lib/bower_components
+www/lib

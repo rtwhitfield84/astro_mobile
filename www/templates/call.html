@@ -1,5 +1,18 @@
-<ion-view>
-<ion-content>
-<button class="button button-full button-positive" style="margin-top: 50px" ng-click="startRecord()">Fetch</button>
-</ion-content>
+<ion-view id="call">
+<ion-content padding="false" scroll="false">
+<!-- <button class="button button-full" ng-click="startRecord()">Fetch</button> -->
+
+    <div class="row responsive-md">
+        <div class="col col-50 col-offset-25">
+
+            <div class="text-center">
+                <a ng-click="startRecord();dimMe = true" ng-class="{dimmed: dimMe}" ng-disabled="dimMe"><img class="fetchImg" src="img/astroJetsons.jpg" alt="Astro"/>
+            <h4 class="title">Fetch!</h4></a>
+            </div>
+
+      <!--         <button class="button button-full" ng-click="startRecord()">Fetch</button> -->
+        </div>
+    </div>
+
+    </ion-content>
 </ion-view>

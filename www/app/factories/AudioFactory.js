@@ -49,39 +49,29 @@ let identify = (msg) => {
 
 
 let postTab = (data) => {
-  if (data.msg === 'Success') {
   return new Promise((resolve, reject) => {
-    // if(data.data.success === false) {
-    //   $window.location.hre ="#/fail";
-    // }
-  console.log("data.success ##########", data.success);
-  console.log("data.data @@@@@@@@@@", data.data);
-  console.log("postTabdata sttirng", JSON.stringify(data));
-  // if (data.data.metadata.music[0].external_metadata.spotify) {
-  // } else {
-  //       var spotify_track_id = '';
-  //       var spotify_album_id = '';
-  // }
-  var spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id;
-  var spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id;
-  var art_url = '';
-  var artist = data.data.metadata.music[0].artists[0].name;
-  var album = data.data.metadata.music[0].album.name;
-  var youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid;
-  var title = data.data.metadata.music[0].title;
-  var indexLetter = artist.slice(0, 1);
-  var tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, '');
-  var artistName = artist.replace(/ /g, '_').replace(/[^\w\s]/gi, '');
-  var chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`;
-  var tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
-  var artistUrl = `https://www.ultimate-guitar.com/tabs/${artistName}_tabs.htm`;
+  let spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id,
+      spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id,
+      artist = data.data.metadata.music[0].artists[0].name,
+      album = data.data.metadata.music[0].album.name,
+      youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid,
+      youtube_video_url= `https://www.youtube.com/watch?v=${youtube_video_id}`,
+      title = data.data.metadata.music[0].title,
+      indexLetter = artist.slice(0, 1),
+      tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, ''),
+      artistName = artist.replace(/ /g, '_').replace(/[^\w\s\-]/gi, ''),
+      chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`,
+      tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`,
+      artistUrl = `https://www.ultimate-guitar.com/tabs/${artistName}_tabs.htm`;
   console.log("RootFactory.getToken()",RootFactory.getToken());
 
       $http({
         url: `https://api.spotify.com/v1/albums/${data.data.metadata.music[0].external_metadata.spotify.album.id}`,
         method: 'GET'
       }).success((artUrl) => {
-        var album_art = artUrl.images[0].url;
+        var x = artUrl;
+        console.log("artURl ################", x);
+        var album_art = x.images[0].url;
         // resolve(album_art);
         console.log("album_art", album_art);
 
@@ -97,7 +87,7 @@ let postTab = (data) => {
         "album": album,
         "spotify_track_id": spotify_track_id,
         "spotify_album_id": spotify_album_id,
-        "youtube_video_id": youtube_video_id,
+        "youtube_video_id": youtube_video_url,
         "art_url": album_art
       },
       headers: {
@@ -118,123 +108,8 @@ let postTab = (data) => {
     $location.path('/fail');
   });
   });
-} else {
-  $location.path('/fail');
-}
   };
     return {identify, postTab};
   });
 
 
-
-
-//   });
-// };
-//   return {identify, postTab};
-// });
-
-
-
-
-
-
-
-// let postTab = (data) => {
-//   return new Promise((resolve, reject) => {
-
-//     $http({
-//       url: `https://api.spotify.com/v1/albums/${data.data.metadata.music[0].external_metadata.spotify.album.id}`,
-//       method: 'GET'
-//     }).success((artUrl) => {
-//       var album_art = artUrl.images[0].url;
-//       // resolve(album_art);
-//       console.log("album_art", album_art);
-
-
-//   // console.log("postTabdata sttirng", JSON.stringify(data));
-//   if (data.data.metadata.music[0].external_metadata.spotify) {
-//         var spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id;
-//         var spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id;
-//   } else {
-//         var spotify_track_id = '';
-//         var spotify_album_id = '';
-//         var art_url = '';
-//   }
-//   var artist = data.data.metadata.music[0].artists[0].name;
-//   var album = data.data.metadata.music[0].album.name;
-//   console.log("data.data.metadata.music[0].external_metadata", JSON.stringify(data.data.metadata.music[0].external_metadata.spotify));
-//   var youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid;
-//   console.log("artist", artist);
-//   var title = data.data.metadata.music[0].title;
-//   var indexLetter = artist.slice(0, 1);
-//   var tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, '');
-//   var artistName = artist.replace(/ /g, '_').replace(/[^\w\s]/gi, '');
-//   var chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`;
-//   var tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`;
-//   var artistUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}_tabs.htm`;
-//   console.log("artistUrl", artistUrl);
-
-//     console.log("artURLIMG", art_url);
-//     $http({
-//       url:"https://api-astro.herokuapp.com/tabs/",
-//       method: 'POST',
-//       data: {
-//         "artist_url": artistUrl,
-//         "chords_url": chordUrl,
-//         "tab_url": tabUrl,
-//         "artist_name": artist,
-//         "song_title": title,
-//         "album": album,
-//         "spotify_track_id": spotify_track_id,
-//         "spotify_album_id": spotify_album_id,
-//         "youtube_video_id": youtube_video_id,
-//         "art_url": album_art
-//       },
-//       headers: {
-//           'Authorization': "Token " + RootFactory.getToken()
-//       }
-//     }).then((obj) => {
-//       console.log("obj suc", JSON.stringify(obj));
-//       resolve(obj);
-//       $window.location.href = '#/results';
-//     }).error((err) => {
-//       console.log("errrrr", JSON.stringify(err));
-//       reject(err);
-//     });
-//   });
-//       }).error((err) => {
-//     console.log(err);
-//   });
-// };
-//   return {identify, postTab};
-// });
-
-
-
-  // let getAlbumArt = (id) =>{
-  //   $http.get(`https://api.spotify.com/v1/albums/${id}`)
-  //   .then(
-  //     function(response){
-  //       console.log("response.data", response.data);
-  //       return response.data;
-  //     },
-  //     function(response){
-  //       console.log("response", response);
-  //     });
-  // };
-
-//   let getAlbumArt = (id) => {
-//     return new Promise((resolve,reject) => {
-//     $http({
-//       url: `https://api.spotify.com/v1/albums/${id}`,
-//       method: 'GET'
-//     }).success((artUrl) => {
-//       var album_art = artUrl.images[0].url;
-//       resolve(album_art);
-//       console.log("album_art", album_art);
-//     }).error((err) => {
-//       console.log(err);
-//     });
-// });
-// };
-//
