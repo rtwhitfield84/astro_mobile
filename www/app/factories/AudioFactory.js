@@ -1,6 +1,6 @@
 "use strict";
 
-astro.factory('AudioStorage', ($http, $window, RootFactory) => {
+astro.factory('AudioStorage', ($http, $window,$location, RootFactory) => {
 
 
   function convertFileToDataURLviaFileReader(url, callback){
@@ -31,15 +31,13 @@ let identify = (msg) => {
         }
     })
     .success((data) => {
+      if (data.msg === 'Success') {
       console.log("data identify", data);
       console.log("data msg", data.msg);
-      if (data.msg === 'Success') {
-        // postTab(data);
         resolve(data);
+      } else {
+        $location.path('/fail');
       }
-      else {
-        $window.location.href = '#/fail';
-     }
     })
     .error((err) => {
       reject(err);
@@ -51,15 +49,21 @@ let identify = (msg) => {
 
 
 let postTab = (data) => {
+  if (data.msg === 'Success') {
   return new Promise((resolve, reject) => {
+    // if(data.data.success === false) {
+    //   $window.location.hre ="#/fail";
+    // }
+  console.log("data.success ##########", data.success);
+  console.log("data.data @@@@@@@@@@", data.data);
   console.log("postTabdata sttirng", JSON.stringify(data));
-  if (data.data.metadata.music[0].external_metadata.spotify) {
-        var spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id;
-        var spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id;
-  } else {
-        var spotify_track_id = '';
-        var spotify_album_id = '';
-  }
+  // if (data.data.metadata.music[0].external_metadata.spotify) {
+  // } else {
+  //       var spotify_track_id = '';
+  //       var spotify_album_id = '';
+  // }
+  var spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id;
+  var spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id;
   var art_url = '';
   var artist = data.data.metadata.music[0].artists[0].name;
   var album = data.data.metadata.music[0].album.name;
@@ -101,14 +105,22 @@ let postTab = (data) => {
       }
     }).success((obj) => {
       console.log("obj suc", JSON.stringify(obj));
-      $window.location.href = '#/results';
+      $location.path('/results');
       resolve(obj);
     }).error((err) => {
+      $location.path('/fail');
       console.log("errrrr", JSON.stringify(err));
       reject(err);
     });
+  })
+  .error((err) => {
+    console.log("err", err);
+    $location.path('/fail');
   });
   });
+} else {
+  $location.path('/fail');
+}
   };
     return {identify, postTab};
   });
