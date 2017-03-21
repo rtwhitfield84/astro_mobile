@@ -38,8 +38,9 @@ $dark:                            #444 !default;
           margin: 0 auto; }
         #login .scroll-content form .header .title {
           font-family: 'Orbitron', sans-serif;
-          font-size: 6em;
-          color: #ecf0f1; }
+          font-size: 6.5em;
+          color: #ecf0f1;
+          text-shadow: 3px 3px 3px #ecf0f1; }
       #login .scroll-content form .button.button-light.active, #login .scroll-content form .button.button-light.activated {
         color: #fff;
         opacity: inherit; }
@@ -59,13 +60,14 @@ $dark:                            #444 !default;
   border-radius: 50%;
   margin: 50% auto auto; }
 
-.title {
+.titleCall {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  text-shadow: 2px 2px 2px #000;
-  color: #ecf0f1; }
+  text-shadow: 3px 3px 3px #ecf0f1;
+  color: #ecf0f1;
+  text-decoration: underline; }
 
-.dimmed {
+a:active {
   opacity: 0.5; }
 
 /*********************FETCH STYLES***************************/
@@ -79,10 +81,10 @@ $dark:                            #444 !default;
 .wrap {
   margin: 50% auto auto; }
 
-.title {
+.titleFetch {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  text-shadow: 2px 2px 2px #000;
+  text-shadow: 3px 3px 3px #ecf0f1;
   color: #ecf0f1; }
 
 /*!

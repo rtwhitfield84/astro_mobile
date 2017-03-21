@@ -52,7 +52,7 @@ astro.run(function($ionicPlatform) {
       cordova.plugins.Keyboard.disableScroll(true);
     }
     if(window.StatusBar) {
-      StatusBar.styleDefault();
+      StatusBar.styleLightContent();
     }
   });
 });
