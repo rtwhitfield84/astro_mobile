@@ -20,7 +20,6 @@ astro.factory('AudioStorage', ($http, $window,$location, RootFactory) => {
 let identify = (msg) => {
 
     return new Promise ((resolve, reject) => {
-    // $window.location.href = "#/fetch";
       convertFileToDataURLviaFileReader(msg,function(base64Data){
         var audioB64 = base64Data;
           $http({
@@ -49,6 +48,7 @@ let identify = (msg) => {
 
 
 let postTab = (data) => {
+  console.log("data in post",JSON.stringify(data));
   return new Promise((resolve, reject) => {
   let spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id,
       spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id,

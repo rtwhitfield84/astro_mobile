@@ -1,7 +1,20 @@
 <ion-view>
-<ion-content>
-<h1>Sorry, Astro couldnt find that</h1>
-<h1>Try Again!</h1>
-<button class="button button-full button-positive" style="margin-top: 50px" ng-click="callAstro()">Call Astro</button>
+<ion-content id="fail">
+
+<div class="row responsive-md">
+    <div class="col col-50 col-offset-25">
+
+        <div class="text-center wrap">
+<h1 class="titleFail">Sorry, Astro couldnt find that</h1>
+      <img class="failImg" src="img/astroFail.png" alt="Astro"/>
+        <h1 class="titleFail">Try Again!</h1>
+        </div>
+
+  <!--         <button class="button button-full" ng-click="startRecord()">Fetch</button> -->
+    </div>
+</div>
 </ion-content>
+<div style="position: absolute; bottom: 0px; width: 100%">
+<button style="color: #2c3e50; font-size: 3em; text-shadow: 1px 1px 1px #ecf0f1;": 'Orbitron', sans-serif;"  class="button button-full bottom" ng-click="callAstro()">Call Astro!</button>
+</div>
 </ion-view>
