@@ -56,7 +56,7 @@ let postTab = (data) => {
       album = data.data.metadata.music[0].album.name.replace(/ *\([^)]*\) */g, ""),
       youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid,
       youtube_video_url= `https://www.youtube.com/watch?v=${youtube_video_id}`,
-      title = data.data.metadata.music[0].title,
+      title = data.data.metadata.music[0].title.replace(/ *\([^)]*\) */g, ""),
       indexLetter = artist.slice(0, 1),
       tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, ''),
       artistName = artist.replace(/ /g, '_').replace(/[^\w\s\-]/gi, ''),
