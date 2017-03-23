@@ -20,7 +20,6 @@ astro.factory('AudioStorage', ($http, $window,$location, RootFactory) => {
 let identify = (msg) => {
 
     return new Promise ((resolve, reject) => {
-    // $window.location.href = "#/fetch";
       convertFileToDataURLviaFileReader(msg,function(base64Data){
         var audioB64 = base64Data;
           $http({
@@ -32,8 +31,6 @@ let identify = (msg) => {
     })
     .success((data) => {
       if (data.msg === 'Success') {
-      console.log("data identify", data);
-      console.log("data msg", data.msg);
         resolve(data);
       } else {
         $location.path('/fail');
@@ -53,27 +50,23 @@ let postTab = (data) => {
   let spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id,
       spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id,
       artist = data.data.metadata.music[0].artists[0].name,
-      album = data.data.metadata.music[0].album.name,
+      album = data.data.metadata.music[0].album.name.replace(/ *\([^)]*\) */g, ""),
       youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid,
       youtube_video_url= `https://www.youtube.com/watch?v=${youtube_video_id}`,
-      title = data.data.metadata.music[0].title,
+      title = data.data.metadata.music[0].title.replace(/ *\([^)]*\) */g, ""),
       indexLetter = artist.slice(0, 1),
       tabTitle = title.replace(/ *\([^)]*\) */g, "").replace(/ /g,"_").replace(/[^\w\s]/gi, ''),
       artistName = artist.replace(/ /g, '_').replace(/[^\w\s\-]/gi, ''),
       chordUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_crd.htm`,
       tabUrl = `https://tabs.ultimate-guitar.com/${indexLetter}/${artistName}/${tabTitle}_tab.htm`,
       artistUrl = `https://www.ultimate-guitar.com/tabs/${artistName}_tabs.htm`;
-  console.log("RootFactory.getToken()",RootFactory.getToken());
 
       $http({
         url: `https://api.spotify.com/v1/albums/${data.data.metadata.music[0].external_metadata.spotify.album.id}`,
         method: 'GET'
       }).success((artUrl) => {
         var x = artUrl;
-        console.log("artURl ################", x);
         var album_art = x.images[0].url;
-        // resolve(album_art);
-        console.log("album_art", album_art);
 
     $http({
       url:"https://api-astro.herokuapp.com/tabs/",
@@ -94,17 +87,14 @@ let postTab = (data) => {
           'Authorization': "Token " + RootFactory.getToken()
       }
     }).success((obj) => {
-      console.log("obj suc", JSON.stringify(obj));
       $location.path('/results');
       resolve(obj);
     }).error((err) => {
       $location.path('/fail');
-      console.log("errrrr", JSON.stringify(err));
       reject(err);
     });
   })
   .error((err) => {
-    console.log("err", err);
     $location.path('/fail');
   });
   });

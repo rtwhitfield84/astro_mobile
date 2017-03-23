@@ -1,6 +1,6 @@
 "use strict";
 
-astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStorage,$location) {
+astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStorage,$location,$timeout) {
 
 
   var recorder = new Object;
@@ -16,7 +16,6 @@ astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStor
   };
 
   $scope.startRecord = () => {
-    console.log("recordingstart");
     recorder.record();
     $window.location.href = "#/fetch";
 
@@ -28,7 +27,6 @@ astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStor
       AudioStorage.postTab(obj)
       .then((obj) => {
         $rootScope.tabs = obj;
-        console.log("$rootScope.tabs", $rootScope.tabs);
     });
     });
   };

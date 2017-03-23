@@ -33,16 +33,17 @@ $dark:                            #444 !default;
         padding-bottom: 20px; }
         #login .scroll-content form .header img {
           display: block;
-          width: 50%;
-          border-radius: 50%;
-          margin: 0 auto; }
+          width: 80%;
+          height: 80%;
+          margin: -60px auto auto; }
         #login .scroll-content form .header .title {
           font-family: 'Orbitron', sans-serif;
-          font-size: 6em;
-          color: #ecf0f1; }
+          font-size: 6.5em;
+          color: #ecf0f1;
+          text-shadow: 3px 3px 3px #ecf0f1; }
       #login .scroll-content form .button.button-light.active, #login .scroll-content form .button.button-light.activated {
         color: #fff;
-        opacity: inherit; }
+        opacity: 0.5; }
 
 /*********************CALL STYLES***************************/
 #call {
@@ -54,18 +55,18 @@ $dark:                            #444 !default;
 
 .fetchImg {
   display: block;
-  width: 50%;
-  height: 50%;
-  border-radius: 50%;
-  margin: 50% auto auto; }
+  width: 80%;
+  height: 80%;
+  margin: auto; }
 
-.title {
+.titleCall {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  text-shadow: 2px 2px 2px #000;
-  color: #ecf0f1; }
+  text-shadow: 3px 3px 3px #ecf0f1;
+  color: #ecf0f1;
+  text-decoration: underline; }
 
-.dimmed {
+a:active {
   opacity: 0.5; }
 
 /*********************FETCH STYLES***************************/
@@ -79,10 +80,65 @@ $dark:                            #444 !default;
 .wrap {
   margin: 50% auto auto; }
 
-.title {
+.titleFetch {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  text-shadow: 2px 2px 2px #000;
+  text-shadow: 3px 3px 3px #ecf0f1;
+  color: #ecf0f1; }
+
+/*********************RESULTS STYLES***************************/
+#results {
+  background: #2c3e50;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  font-family: 'Orbitron', sans-serif;
+  color: #ecf0f1; }
+
+.wrap {
+  margin: 20% auto auto; }
+
+.albumImg {
+  height: 200px;
+  width: 200px; }
+
+.titleResults {
+  font-family: 'Orbitron', sans-serif;
+  color: #ecf0f1;
+  font-size: 4em;
+  text-shadow: 1px 1px 1px #ecf0f1; }
+
+.song {
+  font-family: 'Orbitron', sans-serif;
+  color: #ecf0f1;
+  font-size: 1.5em;
+  text-shadow: 1px 1px 1px #ecf0f1; }
+
+.button {
+  font-family: 'Orbitron', sans-serif;
+  color: #2c3e50;
+  font-size: 5em;
+  text-shadow: 2px 2px 2px #ecf0f1; }
+
+/*********************FAIL STYLES***************************/
+#fail {
+  background: #2c3e50;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
+
+.failImg {
+  display: block;
+  width: 50%;
+  height: 50%;
+  margin: auto; }
+
+.titleFail {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 2.5em;
+  text-shadow: 1px 1px 1px #ecf0f1;
   color: #ecf0f1; }
 
 /*!
