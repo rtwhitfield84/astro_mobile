@@ -53,7 +53,7 @@ let postTab = (data) => {
   let spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id,
       spotify_album_id = data.data.metadata.music[0].external_metadata.spotify.album.id,
       artist = data.data.metadata.music[0].artists[0].name,
-      album = data.data.metadata.music[0].album.name,
+      album = data.data.metadata.music[0].album.name.replace(/ *\([^)]*\) */g, ""),
       youtube_video_id = data.data.metadata.music[0].external_metadata.youtube.vid,
       youtube_video_url= `https://www.youtube.com/watch?v=${youtube_video_id}`,
       title = data.data.metadata.music[0].title,
