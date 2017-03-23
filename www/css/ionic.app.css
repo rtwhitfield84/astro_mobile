@@ -40,10 +40,12 @@ $dark:                            #444 !default;
           font-family: 'Orbitron', sans-serif;
           font-size: 6.5em;
           color: #ecf0f1;
-          text-shadow: 3px 3px 3px #ecf0f1; }
+          text-shadow: 3px 3px 3px #179E5C;
+          font-style: italic; }
       #login .scroll-content form .button.button-light.active, #login .scroll-content form .button.button-light.activated {
         color: #fff;
-        opacity: 0.5; }
+        opacity: 0.5;
+        text-shadow: 1px 1px 1px #179E5C; }
 
 /*********************CALL STYLES***************************/
 #call {
@@ -62,7 +64,7 @@ $dark:                            #444 !default;
 .titleCall {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  text-shadow: 3px 3px 3px #ecf0f1;
+  text-shadow: 3px 3px 3px #179E5C;
   color: #ecf0f1;
   text-decoration: underline; }
 
@@ -83,7 +85,7 @@ a:active {
 .titleFetch {
   font-family: 'Orbitron', sans-serif;
   font-size: 4em;
-  text-shadow: 3px 3px 3px #ecf0f1;
+  text-shadow: 3px 3px 3px #179E5C;
   color: #ecf0f1; }
 
 /*********************RESULTS STYLES***************************/
@@ -107,19 +109,20 @@ a:active {
   font-family: 'Orbitron', sans-serif;
   color: #ecf0f1;
   font-size: 4em;
-  text-shadow: 1px 1px 1px #ecf0f1; }
+  text-shadow: 1px 1px 1px #179E5C;
+  font-style: italic; }
 
 .song {
   font-family: 'Orbitron', sans-serif;
   color: #ecf0f1;
   font-size: 1.5em;
-  text-shadow: 1px 1px 1px #ecf0f1; }
+  text-shadow: 1px 1px 1px #179E5C; }
 
 .button {
   font-family: 'Orbitron', sans-serif;
   color: #2c3e50;
   font-size: 5em;
-  text-shadow: 2px 2px 2px #ecf0f1; }
+  text-shadow: 2px 2px 2px #179E5C; }
 
 /*********************FAIL STYLES***************************/
 #fail {
@@ -138,8 +141,9 @@ a:active {
 .titleFail {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.5em;
-  text-shadow: 1px 1px 1px #ecf0f1;
-  color: #ecf0f1; }
+  text-shadow: 1px 1px 1px #179E5C;
+  color: #ecf0f1;
+  font-style: italic; }
 
 /*!
   Ionicons, v2.0.1
