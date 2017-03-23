@@ -16,10 +16,6 @@ astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStor
   };
 
   $scope.startRecord = () => {
-    console.log("recordingstart");
-    // $timeout(function() {
-    //     angular.element('.exit').addClass("animated rotateOutDownRight");
-    // }, 5000);
     recorder.record();
     $window.location.href = "#/fetch";
 
@@ -31,7 +27,6 @@ astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStor
       AudioStorage.postTab(obj)
       .then((obj) => {
         $rootScope.tabs = obj;
-        console.log("$rootScope.tabs", $rootScope.tabs);
     });
     });
   };

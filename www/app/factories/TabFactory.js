@@ -2,9 +2,6 @@
 
 astro.factory('TabStorage', ($http, $window, RootFactory) => {
 
-// let postTab = (tab) => {
-
-// };
 
 let getSong = () => {
   console.log("getsong");

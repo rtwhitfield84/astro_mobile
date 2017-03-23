@@ -35,8 +35,6 @@ astro.controller('UserCtrl', function($scope, $http, $window, RootFactory) {
   };
 
   $scope.login = function() {
-    console.log("hi");
-    console.log("user", $scope.user);
     try {
       $http({
         url: "https://api-astro.herokuapp.com/api-token-auth/",
@@ -50,14 +48,12 @@ astro.controller('UserCtrl', function($scope, $http, $window, RootFactory) {
           RootFactory.setToken(res.data.token);
           if (res.data.token !== "") {
             $window.location.href = '#/call';
-          console.log(RootFactory.getToken());
           }
         },
         console.error
       );
   }
   catch(err){
-    console.log("err", err);
   }
   };
 
