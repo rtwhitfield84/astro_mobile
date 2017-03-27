@@ -7,20 +7,6 @@
 
     <link rel="manifest" href="manifest.json">
 
-    <!-- un-comment this code to enable service worker
-    <script>
-      if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register('service-worker.js')
-          .then(() => console.log('service worker installed'))
-          .catch(err => console.log('Error', err));
-      }
-    </script>-->
-
-<!--     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet"> -->
-
-    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
-    -->
     <link href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet">
 
 
@@ -30,8 +16,6 @@
 
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
   </head>
@@ -46,8 +30,6 @@
     <!-- providers -->
     <script src="app/factories/AudioFactory.js"></script>
     <script src="app/factories/RootFactory.js"></script>
-    <script src="app/factories/TabFactory.js"></script>
-
     <!-- controllers -->
     <script src="app/controllers/UserCtrl.js"></script>
     <script src="app/controllers/CallCtrl.js"></script>

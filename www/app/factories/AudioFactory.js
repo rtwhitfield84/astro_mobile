@@ -2,7 +2,7 @@
 
 astro.factory('AudioStorage', ($http, $window,$location, RootFactory) => {
 
-
+//gets local audio file and converts to base64
   function convertFileToDataURLviaFileReader(url, callback){
       var xhr = new XMLHttpRequest();
       xhr.responseType = 'blob';
@@ -16,7 +16,7 @@ astro.factory('AudioStorage', ($http, $window,$location, RootFactory) => {
       xhr.open('GET', url);
       xhr.send();
   }
-
+//posts base64 encoded file to backgroud process to be identified via acrcloud
 let identify = (msg) => {
 
     return new Promise ((resolve, reject) => {
@@ -44,7 +44,7 @@ let identify = (msg) => {
   };
 
 
-
+//receives data returned from identify and creates necessary field values to be saved on users tab profile
 let postTab = (data) => {
   return new Promise((resolve, reject) => {
   let spotify_track_id = data.data.metadata.music[0].external_metadata.spotify.track.id,

@@ -1,10 +1,11 @@
 "use strict";
 
-astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStorage,$location,$timeout) {
+astro.controller('CallCtrl', function($scope,$rootScope,$state,$window,AudioStorage,$location) {
 
 
   var recorder = new Object;
 
+//records 5 sec of audio source and initiates identification process
   recorder.record = function() {
     window.plugins.audioRecorderAPI.record(function(msg) {
       // complete
