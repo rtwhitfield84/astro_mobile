@@ -1,6 +1,6 @@
 # astro_mobile
 
-The is the mobile app for Astro (AUDIO SIGNATURE TABLATURE RETRIEVAL OPERATION).
+This is the mobile app for Astro (AUDIO SIGNATURE TABLATURE RETRIEVAL OPERATION).
 Astro, will listen to an audio source and if recognized fetch the song information and save the guitar tablature to a users "Tab Yard" stored in the astro database and accessible via the [Astro desktop client](https://github.com/rtwhitfield84/astro_website)
 
 ## Installing
